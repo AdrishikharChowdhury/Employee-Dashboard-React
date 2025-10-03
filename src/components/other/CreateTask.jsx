@@ -1,7 +1,7 @@
 import { useContext,useState,useEffect } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
-import React from 'react';
 import { setLocalStorage } from '../../utils/localStorage';
+import React from 'react';
 
 const CreateTask = () => {
 
@@ -13,6 +13,21 @@ const CreateTask = () => {
     const [taskDate, settaskDate] = useState('');
     const [assignTo, setassignTo] = useState(employeeInfo.length > 0 ? employeeInfo[0].name : '');
     const [category, setcategory] = useState('');
+    const [isMessage, setisMessage] = useState(false)
+
+    useEffect(() => {
+    if (isMessage) 
+    {
+        const timeoutId = setTimeout(() => {
+        setisMessage(false);
+        }, 1500);
+        return () => clearTimeout(timeoutId);
+    }
+    }, [isMessage]);
+
+    const handleMessage=()=>{
+        setisMessage(true);
+    }
 
     useEffect(() => {
     console.log("assignTo changed:", assignTo);
@@ -131,7 +146,8 @@ const CreateTask = () => {
                     onChange={(e)=>{handleCategory(e)}}/>
                 </label>
                 <button 
-                className='bg-blue-700 lg:p-4 p-3 w-full cursor-pointer rounded-full'>
+                className='bg-blue-700 lg:p-4 p-3 w-full cursor-pointer rounded-full'
+                onClick={handleMessage}>
                     Create
                 </button>
             </div>
@@ -147,6 +163,9 @@ const CreateTask = () => {
                 </label>
             </div>
             </form>
+            <p className={`border-2 border-blue-900 rounded-2xl p-4 shadow-xl shadow-blue-950 ${isMessage ? "inline" : "hidden"}`}>
+                {isMessage ? `Task Created Successfully. Assigned to ${assignTo}` : ""}
+            </p>
         </div>
   )
 }
