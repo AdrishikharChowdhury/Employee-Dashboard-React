@@ -2,11 +2,12 @@ import { useContext,useState,useEffect } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 import { setLocalStorage } from '../../utils/localStorage';
 import React from 'react';
+import { motion } from 'framer-motion'
 
 const CreateTask = () => {
 
     const {userData,setUserData} = useContext(AuthContext);
-    const employeeInfo = userData?.employeeData ?? [];
+    const employeeInfo = userData?.employees ?? [];
 
     const [taskTitle, settaskTitle] = useState('');
     const [taskDescription, settaskDescription] = useState('');
@@ -64,7 +65,7 @@ const CreateTask = () => {
             // Update the userData object immutably
             setUserData(prev => ({
                 ...prev,
-                employeeData: updatedEmployees,
+                employees: updatedEmployees,
             }));
 
         setLocalStorage(); // Be sure this updates localStorage based on userData after setUserData
@@ -102,15 +103,15 @@ const CreateTask = () => {
 
   return (
     <div className="z-20 relative text-white w-full h-max flex flex-col justify-start items-center gap-4">
-            <h1 className='lg:text-4xl text-2xl font-semibold'>Create Task</h1>
+            <h1 className='lg:text-4xl text-2xl font-semibold p-4 glass'>New Mission</h1>
             <form 
-            className='flex sm:flex-row flex-col justify-evenly items-center border-2 border-blue-900 shadow-blue-900 shadow-2xl lg:p-10 p-5 rounded-2xl lg:text-xl text-sm lg:gap-5 gap-4 lg:w-8/10 w-9/10 min-h-max lg:h-156 h-max'
+            className='glass flex sm:flex-row flex-col justify-evenly items-center border-2 border-green-900 shadow-green-900 shadow-2xl lg:p-10 p-5 rounded-2xl lg:text-xl text-sm lg:gap-5 gap-4 lg:w-8/10 w-9/10 min-h-max lg:h-156 h-max'
             onSubmit={(e)=>{submitHandler(e)}}>
             <div className="flex flex-col justify-center items-start lg:gap-5 gap-3 sm:w-4/5 w-full">
                 <label className='flex flex-col justify-center items-start w-full gap-2' htmlFor="">
-                    <p>Task Title:</p>
+                    <p>Mission Title:</p>
                     <input 
-                    className='border-2 border-blue-500 lg:p-4 p-3 rounded-xl lg:text-lg text-sm w-full outline-none' type="text" name=""
+                    className='border-2 border-green-500 lg:p-4 p-3 rounded-xl lg:text-lg text-sm w-full outline-none' type="text" name=""
                     placeholder='Enter the Task Title...'
                     onChange={(e)=>handleTitle(e)}
                     value={taskTitle}
@@ -119,14 +120,14 @@ const CreateTask = () => {
                 <label className='flex flex-col justify-center items-start w-full gap-2' htmlFor="">
                     <p>Date:</p>
                     <input 
-                    className='border-2 border-blue-500 lg:p-4 p-3 rounded-xl lg:text-lg text-sm w-full outline-none' type="date" name=""
+                    className='border-2 border-green-500 lg:p-4 p-3 rounded-xl lg:text-lg text-sm w-full outline-none' type="date" name=""
                     value={taskDate}
                     onChange={(e)=>{handleDate(e)}}/>
                 </label>
                 <label className='flex flex-col justify-center items-start w-full gap-2' htmlFor="">
                     <p>Assign to:</p>
                     <select 
-                    className='border-2 border-blue-500 lg:p-4 p-3 rounded-xl lg:text-lg text-sm w-full outline-none'
+                    className='border-2 border-green-500 lg:p-4 p-3 rounded-xl lg:text-lg text-sm w-full outline-none'
                     value={assignTo}
                     onChange={(e) => handleAssignTo(e)}
                     >
@@ -138,24 +139,29 @@ const CreateTask = () => {
                     </select>
                 </label>
                 <label className='flex flex-col justify-center items-start w-full gap-2' htmlFor="">
-                    <p>Category</p>
+                    <p>Mission Category</p>
                     <input 
-                    className='border-2 border-blue-500 lg:p-4 p-3 rounded-xl lg:text-lg text-sm w-full outline-none' type="text" name=""
+                    className='border-2 border-green-500 lg:p-4 p-3 rounded-xl lg:text-lg text-sm w-full outline-none' type="text" name=""
                     placeholder='Enter the Category of the Task'
                     value={category}
                     onChange={(e)=>{handleCategory(e)}}/>
                 </label>
-                <button 
-                className='bg-blue-700 lg:p-4 p-3 w-full cursor-pointer rounded-full'
-                onClick={handleMessage}>
-                    Create
-                </button>
+                <motion.button 
+                    className='bg-green-600 border-green-900 lg:p-4 p-3 w-full cursor-pointer rounded-full border-2 transition duration-500 ease-in-out hover:bg-green-700'
+                    onClick={handleMessage}
+                    whileTap={{
+                        scale: 0.8,
+                        transition: { duration: 0.2 }
+                    }}
+                    >
+                    Send
+                    </motion.button>
             </div>
             <div className="h-full flex justify-center items-center w-full">
                 <label className='flex flex-col justify-center items-start w-full gap-1.5 h-full' htmlFor="">
-                    <p>Task Description:</p>
+                    <p>Mission Description:</p>
                     <textarea 
-                    className='lg:h-125 h-92 border-2 border-blue-500 lg:p-4 p-3 rounded-xl lg:text-lg text-sm w-full outline-none' 
+                    className='lg:h-125 h-92 border-2 border-green-500 lg:p-4 p-3 rounded-xl lg:text-lg text-sm w-full outline-none' 
                     name=""
                     placeholder='Enter the Task Description...'
                     onChange={(e)=>handleDescription(e)}
@@ -163,7 +169,7 @@ const CreateTask = () => {
                 </label>
             </div>
             </form>
-            <p className={`border-2 border-blue-900 rounded-2xl p-4 shadow-xl shadow-blue-950 ${isMessage ? "inline" : "hidden"}`}>
+            <p className={`glass border-2 border-green-900 rounded-2xl p-4 shadow-xl shadow-green-950 ${isMessage ? "inline" : "hidden"}`}>
                 {isMessage ? `Task Created Successfully. Assigned to ${assignTo}` : ""}
             </p>
         </div>

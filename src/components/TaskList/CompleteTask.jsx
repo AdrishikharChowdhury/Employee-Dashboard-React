@@ -2,7 +2,7 @@ import React from 'react'
 
 const CompleteTask = ({title,description,date,category}) => {
   return (
-    <div className="lg:size-100 size-80 lg:p-5 p-3 bg-green-400 text-black flex-shrink-0 border-2 rounded-xl border-green-800 flex flex-col justify-start gap-10">
+    <div className="lg:size-100 size-80 lg:p-5 p-3 bg-stone-green text-white flex-shrink-0 border-2 rounded-xl border-green-800 flex flex-col justify-start gap-10">
         <div className="w-full flex items-center justify-between">
             <h2 className='bg-red-600 p-2 rounded-lg text-white'>{category}</h2>
             <h2>{date}</h2>

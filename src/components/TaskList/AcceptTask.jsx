@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/AuthProvider'
+import { getLocalStorage, setLocalStorage } from '../../utils/localStorage';
+import { motion } from 'framer-motion';
 
 const AcceptTask = ({title,description,date,category,name,tId}) => {
 
   const {userData,setUserData}=useContext(AuthContext);
-    const employeeInfo = userData?.employeeData ?? [];
+    const employeeInfo = userData.employees;
 
     useEffect(() => {
-      localStorage.setItem('userData', JSON.stringify(userData));
+      setLocalStorage(userData.employees,userData.admin);
     }, [userData])
     
 
@@ -37,7 +39,7 @@ const AcceptTask = ({title,description,date,category,name,tId}) => {
         return employee;
     });
 
-    setUserData(prev => ({ ...prev, employeeData: updatedEmployees }));
+    setUserData(prev => ({ ...prev, employees: updatedEmployees }));
     };
 
     const handleFailed = () => {
@@ -65,12 +67,13 @@ const AcceptTask = ({title,description,date,category,name,tId}) => {
         return employee;
     });
 
-    setUserData(prev => ({ ...prev, employeeData: updatedEmployees }));
+    setUserData(prev => ({ ...prev, employees: updatedEmployees }));
+    setLocalStorage();
     };
 
 
   return (
-    <div className="text-black lg:size-100 size-80 lg:p-5 p-3 bg-yellow-400 flex-shrink-0 border-2 rounded-xl border-yellow-800 flex flex-col justify-between gap-10">
+    <div className="text-black lg:size-100 size-80 lg:p-5 p-3 bg-stone-yellow flex-shrink-0 border-2 rounded-xl border-yellow-800 flex flex-col justify-between gap-10">
         <div className="w-full flex items-center justify-between">
             <h2 className='bg-red-600 p-2 rounded-lg text-white'>{category}</h2>
             <h2>{date}</h2>
@@ -80,16 +83,22 @@ const AcceptTask = ({title,description,date,category,name,tId}) => {
             <h3 className='text-sm'>{description}</h3>
         </div>
         <div className="flex w-full flex-col lg:gap-4 gap-1.5 text-white lg:text-base text-sm">
-            <button 
+            <motion.button 
             className='cursor-pointer w-full p-3 bg-green-600 rounded-xl'
-            onClick={handleCompleted}>
+            onClick={handleCompleted}
+            whileTap={{
+                    scale: 0.8
+                }}>
               Mark As Completed
-            </button>
-            <button 
+            </motion.button>
+            <motion.button 
             className='cursor-pointer w-full p-3 bg-red-600 rounded-xl'
-            onClick={handleFailed}>
+            onClick={handleFailed}
+            whileTap={{
+                    scale: 0.8
+                }}>
               Mark As Failed
-            </button>
+            </motion.button>
         </div>
     </div>
   )

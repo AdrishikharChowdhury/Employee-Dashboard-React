@@ -1,8 +1,16 @@
+import senku from '../assets/senku.jpg'
+import taiju from '../assets/taiju.jpg'
+import yuzu from '../assets/yuzu.jpg'
+import gen from '../assets/gen.jpg'
+import kohaku from '../assets/kohaku.jpg'
+import byaku from '../assets/byakuya.jpg'
+
 const initial=()=>{
         const employees = [
     {
         "id": 1,
         "name": "Senku Ishigami",
+        "photo": `${senku}`,
         "email": "senku.ishigami@stoneworld.com",
         "password": "123",
         "tasks": [
@@ -48,6 +56,7 @@ const initial=()=>{
         "id": 2,
         "name": "Taiju Oki",
         "email": "taiju.oki@stoneworld.com",
+        "photo": `${taiju}`,
         "password": "123",
         "tasks": [
         {
@@ -102,6 +111,7 @@ const initial=()=>{
         "id": 3,
         "name": "Yuzuriha Ogawa",
         "email": "yuzuriha.ogawa@stoneworld.com",
+        "photo": `${yuzu}`,
         "password": "123",
         "tasks": [
         {
@@ -146,6 +156,7 @@ const initial=()=>{
         "id": 4,
         "name": "Gen Asagiri",
         "email": "gen.asagiri@stoneworld.com",
+        "photo": `${gen}`,
         "password": "123",
         "tasks": [
         {
@@ -200,6 +211,7 @@ const initial=()=>{
         "id": 5,
         "name": "Kohaku",
         "email": "kohaku@stoneworld.com",
+        "photo": `${kohaku}`,
         "password": "123",
         "tasks": [
         {
@@ -266,6 +278,7 @@ const initial=()=>{
     {
         "id": 1,
         "name": "Byakuya Ishigami",
+        "photo": `${byaku}`,
         "email": "byakuya.ishigami@stoneworld.com",
         "password": "123"
     }
@@ -275,20 +288,21 @@ const initial=()=>{
 }
 
 export const setLocalStorage = (employees, admin) => {
-
-    if ((!employees || employees.length === 0) && (!admin || admin.length === 0)) {
-        const initialData = initial();
-        employees = initialData.employees;
-        admin = initialData.admin;
+    if (!employees || employees.length === 0) {
+        employees = initial().employees;
     }
 
+    if (!admin || admin.length === 0) {
+        admin = initial().admin;
+    }
 
-  localStorage.setItem('employees', JSON.stringify(employees));
-  localStorage.setItem('admin', JSON.stringify(admin));
+    localStorage.setItem('employees', JSON.stringify(employees));
+    localStorage.setItem('admin', JSON.stringify(admin));
 };
 
+
 export const getLocalStorage = () => {
-  const employeeData = JSON.parse(localStorage.getItem('employees'));
-  const adminData = JSON.parse(localStorage.getItem('admin'));
-  return { employeeData, adminData };
+  const employees = JSON.parse(localStorage.getItem('employees'));
+  const admin = JSON.parse(localStorage.getItem('admin'));
+  return { employees, admin };
 };

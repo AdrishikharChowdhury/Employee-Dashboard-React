@@ -1,17 +1,18 @@
 import React from 'react'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/AuthProvider'
-import { setLocalStorage } from '../../utils/localStorage';
+import { getLocalStorage, setLocalStorage } from '../../utils/localStorage';
 import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 
 const NewTask = ({title,description,date,category,name,tId}) => {
 
     const {userData,setUserData}=useContext(AuthContext);
-    const employeeInfo = userData?.employeeData ?? [];
+    const employeeInfo = userData.employees;
 
     useEffect(() => {
-      localStorage.setItem('userData', JSON.stringify(userData));
+      setLocalStorage(userData.employees,userData.admin);
     }, [userData])
     
 
@@ -40,12 +41,12 @@ const NewTask = ({title,description,date,category,name,tId}) => {
         return employee;
     });
 
-    setUserData(prev => ({ ...prev, employeeData: updatedEmployees }));
+    setUserData(prev => ({ ...prev, employees: updatedEmployees }));
     };
 
 
   return (
-    <div className="lg:size-100 size-80 lg:p-5 p-3 bg-blue-400 flex-shrink-0 border-2 rounded-xl border-blue-800 text-black flex flex-col justify-between gap-10">
+    <div className="lg:size-100 size-80 lg:p-5 p-3 bg-stone-blue flex-shrink-0 border-2 rounded-xl border-blue-800 text-black flex flex-col justify-between gap-10">
         <div className="w-full flex items-center justify-between">
             <h2 className='bg-red-600 p-2 rounded-lg text-white'>{category}</h2>
             <h2>{date}</h2>
@@ -54,11 +55,14 @@ const NewTask = ({title,description,date,category,name,tId}) => {
             <h3 className='lg:text-2xl text-lg font-bold'>{title}</h3>
             <h3 className='text-sm'>{description}</h3>
         </div>
-        <button 
+        <motion.button 
         className='cursor-pointer w-full p-3 bg-green-600 rounded-xl text-white'
-        onClick={handleAccept}>
+        onClick={handleAccept}
+        whileTap={{
+                    scale: 0.8
+                }}>
             Accept Task
-        </button>
+        </motion.button>
     </div>
   )
 }
