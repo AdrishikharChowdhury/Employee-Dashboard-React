@@ -1,0 +1,11 @@
+EMPLOYEES:
+Senku Ishigami: senku.ishigami@stoneworld.com
+Taiju Oki: taiju.oki@stoneworld.com
+Yuzuriha Ogawa: yuzuriha.ogawa@stoneworld.com
+Gen Asagiri: gen.asagiri@stoneworld.com
+Kohaku: kohaku@stoneworld.com
+
+ADMIN:
+Byakuya Ishigami: byakuya.ishigami@stoneworld.com
+
+Password: 123
