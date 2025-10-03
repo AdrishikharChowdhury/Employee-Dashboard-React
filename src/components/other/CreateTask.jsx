@@ -87,15 +87,15 @@ const CreateTask = () => {
 
   return (
     <div className="z-20 relative text-white w-full h-max flex flex-col justify-start items-center gap-4">
-            <h1 className='text-4xl font-semibold'>Create Task</h1>
+            <h1 className='lg:text-4xl text-2xl font-semibold'>Create Task</h1>
             <form 
-            className='flex justify-evenly items-center border-2 border-blue-900 shadow-blue-900 shadow-2xl p-10 rounded-2xl text-xl gap-5 w-3/5 min-h-max h-156'
+            className='flex sm:flex-row flex-col justify-evenly items-center border-2 border-blue-900 shadow-blue-900 shadow-2xl lg:p-10 p-5 rounded-2xl lg:text-xl text-sm lg:gap-5 gap-4 lg:w-8/10 w-9/10 min-h-max lg:h-156 h-max'
             onSubmit={(e)=>{submitHandler(e)}}>
-            <div className="flex flex-col justify-center items-start gap-5 w-4/5">
+            <div className="flex flex-col justify-center items-start lg:gap-5 gap-3 sm:w-4/5 w-full">
                 <label className='flex flex-col justify-center items-start w-full gap-2' htmlFor="">
                     <p>Task Title:</p>
                     <input 
-                    className='border-2 border-blue-500 p-4 rounded-xl text-lg w-full outline-none' type="text" name=""
+                    className='border-2 border-blue-500 lg:p-4 p-3 rounded-xl lg:text-lg text-sm w-full outline-none' type="text" name=""
                     placeholder='Enter the Task Title...'
                     onChange={(e)=>handleTitle(e)}
                     value={taskTitle}
@@ -104,14 +104,14 @@ const CreateTask = () => {
                 <label className='flex flex-col justify-center items-start w-full gap-2' htmlFor="">
                     <p>Date:</p>
                     <input 
-                    className='border-2 border-blue-500 p-4 rounded-xl text-lg w-full outline-none' type="date" name=""
+                    className='border-2 border-blue-500 lg:p-4 p-3 rounded-xl lg:text-lg text-sm w-full outline-none' type="date" name=""
                     value={taskDate}
                     onChange={(e)=>{handleDate(e)}}/>
                 </label>
                 <label className='flex flex-col justify-center items-start w-full gap-2' htmlFor="">
                     <p>Assign to:</p>
                     <select 
-                    className='border-2 border-blue-500 p-4 rounded-xl text-lg w-full outline-none'
+                    className='border-2 border-blue-500 lg:p-4 p-3 rounded-xl lg:text-lg text-sm w-full outline-none'
                     value={assignTo}
                     onChange={(e) => handleAssignTo(e)}
                     >
@@ -125,18 +125,21 @@ const CreateTask = () => {
                 <label className='flex flex-col justify-center items-start w-full gap-2' htmlFor="">
                     <p>Category</p>
                     <input 
-                    className='border-2 border-blue-500 p-4 rounded-xl text-lg w-full outline-none' type="text" name=""
+                    className='border-2 border-blue-500 lg:p-4 p-3 rounded-xl lg:text-lg text-sm w-full outline-none' type="text" name=""
                     placeholder='Enter the Category of the Task'
                     value={category}
                     onChange={(e)=>{handleCategory(e)}}/>
                 </label>
-                <button className='bg-blue-700 p-4 w-full cursor-pointer rounded-full'>Create</button>
+                <button 
+                className='bg-blue-700 lg:p-4 p-3 w-full cursor-pointer rounded-full'>
+                    Create
+                </button>
             </div>
             <div className="h-full flex justify-center items-center w-full">
                 <label className='flex flex-col justify-center items-start w-full gap-1.5 h-full' htmlFor="">
                     <p>Task Description:</p>
                     <textarea 
-                    className='h-full border-2 border-blue-500 p-4 rounded-xl text-lg w-full outline-none' 
+                    className='lg:h-125 h-92 border-2 border-blue-500 lg:p-4 p-3 rounded-xl lg:text-lg text-sm w-full outline-none' 
                     name=""
                     placeholder='Enter the Task Description...'
                     onChange={(e)=>handleDescription(e)}

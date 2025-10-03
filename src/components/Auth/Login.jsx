@@ -39,16 +39,16 @@ const Login = ({handleUser}) => {
     }
 
   return (
-    <div className='flex-col gap-8 text-white flex items-center justify-center h-screen w-screen z-20 relative'>
-        <div className="border-2 border-blue-900 rounded-2xl p-4 shadow-xl shadow-blue-950 w-1/4">
-            <h1 className='text-white font-extrabold text-center py-6 text-4xl w-full'>Login</h1>
+    <div className='flex-col sm:gap-8 gap-4 text-white flex items-center justify-center h-screen w-screen z-20 relative'>
+        <div className="border-2 border-blue-900 rounded-2xl sm:p-4 p-2 shadow-xl shadow-blue-950 lg:w-2/5 md:w-1/2 sm:w-3/4 w-9/10">
+            <h1 className='text-white font-extrabold text-center sm:py-6 py-3 sm:text-4xl text-2xl w-full'>Login</h1>
             <form 
-            className='flex flex-col items-center gap-6 p-6 text-xl'
+            className='flex flex-col items-center sm:gap-6 gap-4 sm:p-6 p-3 sm:text-xl text-md'
             onSubmit={(e)=>{handleSubmit(e)}}>
                 <input 
                 type="email" name="" id="" 
                 placeholder='Enter your email'
-                className='border-2 border-blue-500 p-4 rounded-full text-lg w-full outline-none'
+                className='border-2 border-blue-500 p-4 rounded-full sm:text-lg text-sm w-full outline-none'
                 required
                 value={email}
                 onChange={(e)=>{handleEmail(e)}}
@@ -56,13 +56,13 @@ const Login = ({handleUser}) => {
                 <input 
                 type="password" name="" id="" 
                 placeholder='Enter your password'
-                className='border-2 border-blue-500 p-4 rounded-full text-lg w-full outline-none'
+                className='border-2 border-blue-500 p-4 rounded-full sm:text-lg text-sm w-full outline-none'
                 required
                 value={password}
                 onChange={(e)=>{handlePassword(e)}}
                 />
                 <button 
-                className='w-full bg-blue-800 text-white rounded-full p-4 cursor-pointer'
+                className='w-full bg-blue-800 text-white rounded-full sm:p-4 p-3 cursor-pointer'
                 onClick={handleMessage}>
                     Login
                 </button>

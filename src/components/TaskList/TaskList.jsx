@@ -15,8 +15,8 @@ const TaskList = ({name}) => {
 
   return (
     <div className='flex-col mt-10 h-full relative z-20 flex justify-center items-start gap-5  px-6 py-8'>
-        <h1 className='text-3xl font-semibold flex-nowrap'>Your Tasks:</h1>
-        <div className="flex items-center no-scrollbar w-full overflow-x-auto justify-start gap-8">
+        <h1 className='lg:text-3xl text-2xl font-semibold flex-nowrap'>Your Tasks:</h1>
+        <div className="flex items-center no-scrollbar w-full overflow-x-auto justify-start lg:gap-8 gap-4">
             {info.tasks.map((task,idx)=>{
                 if(task.new){
                     return <NewTask name={name} tId={idx} key={idx} title={task.title} description={task.description} date={task.date} category={task.category} />
