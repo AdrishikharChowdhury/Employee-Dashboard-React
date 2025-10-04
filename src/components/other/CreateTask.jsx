@@ -32,8 +32,12 @@ const CreateTask = () => {
 
     useEffect(() => {
       setLocalStorage(userData.employees,userData.admin);
-      setUserData(()=>{return getLocalStorage()});
     }, [userData])
+
+    useEffect(() => {
+      setUserData(()=>{return getLocalStorage()});
+    }, [])
+    
 
 
     const submitHandler = (e) => {
