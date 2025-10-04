@@ -2,7 +2,7 @@ import React from 'react'
 
 const EmployeeCard = ({name, taskCount, photo}) => {
   return (
-    <div className="min-size-120 max-size-120 lg:size-120 md:size-100 size-85 lg:p-8 md:p-7 sm:p-6 p-4 bg-wood-brown flex-shrink-0 border-4 rounded-xl flex flex-col justify-between font-bold border-emerald-950 text-white">
+    <div className="min-size-120 max-size-120 lg:size-120 md:size-100 size-85 lg:p-8 md:p-7 sm:p-6 p-4 bg-wood-brown flex-shrink-0 border-2 rounded-xl flex flex-col justify-between font-bold border-white text-white wood">
         <div className="w-full flex justify-center items-center">
             <img 
         src={`${photo}`} alt="profile" 

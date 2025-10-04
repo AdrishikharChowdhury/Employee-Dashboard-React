@@ -103,7 +103,7 @@ const CreateTask = () => {
 
   return (
     <div className="z-20 relative text-white w-full h-max flex flex-col justify-start items-center gap-4">
-            <h1 className='lg:text-4xl text-2xl font-semibold p-4 glass'>New Mission</h1>
+            <h1 className='lg:text-4xl text-2xl font-semibold p-4 glass rounded-xl'>New Mission</h1>
             <form 
             className='glass flex sm:flex-row flex-col justify-evenly items-center border-2 border-green-900 shadow-green-900 shadow-2xl lg:p-10 p-5 rounded-2xl lg:text-xl text-sm lg:gap-5 gap-4 lg:w-8/10 w-9/10 min-h-max lg:h-156 h-max'
             onSubmit={(e)=>{submitHandler(e)}}>
@@ -147,7 +147,7 @@ const CreateTask = () => {
                     onChange={(e)=>{handleCategory(e)}}/>
                 </label>
                 <motion.button 
-                    className='bg-green-600 border-green-900 lg:p-4 p-3 w-full cursor-pointer rounded-full border-2 transition duration-500 ease-in-out hover:bg-green-700'
+                    className='bg-stone-green lg:p-4 p-3 w-full cursor-pointer rounded-full border-2 transition duration-500 ease-in-out border-white'
                     onClick={handleMessage}
                     whileTap={{
                         scale: 0.8,

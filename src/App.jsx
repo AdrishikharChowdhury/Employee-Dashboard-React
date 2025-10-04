@@ -46,10 +46,19 @@ const App = () => {
     }
   }
 
+  const handlePetrify=()=>{
+    if(!user){
+      return "grayscale-100"
+    }
+    else{
+      return "grayscale-0"
+    }
+  }
+
   return (
-    <div className="relative min-h-screen h-full min-w-screen w-full flex flex-col lg:gap-6 md:gap-4 gap-2 justify-center items-center">
+    <div className={`relative min-h-screen h-full min-w-screen w-full flex flex-col lg:gap-6 md:gap-4 gap-2 justify-center  items-center`}>
       <div
-          className="absolute inset-0 bg-no-repeat bg-center bg-cover filter blur-sm"
+          className={` ${handlePetrify()} absolute inset-0 bg-no-repeat bg-center bg-cover filter blur-sm`}
           style={{ backgroundImage: `url(${Background})` }}
       ></div>
       {!user ? <Login handleUser={handleUser}/> : ""}

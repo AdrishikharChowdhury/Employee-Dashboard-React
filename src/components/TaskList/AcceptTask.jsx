@@ -73,7 +73,7 @@ const AcceptTask = ({title,description,date,category,name,tId}) => {
 
 
   return (
-    <div className="text-black lg:size-100 size-80 lg:p-5 p-3 bg-stone-yellow flex-shrink-0 border-2 rounded-xl border-yellow-800 flex flex-col justify-between gap-10">
+    <div className="text-black lg:size-100 size-80 lg:p-5 p-3 yellowwood flex-shrink-0 border-2 rounded-xl border-white flex flex-col justify-between gap-10">
         <div className="w-full flex items-center justify-between">
             <h2 className='bg-red-600 p-2 rounded-lg text-white'>{category}</h2>
             <h2>{date}</h2>
@@ -84,7 +84,7 @@ const AcceptTask = ({title,description,date,category,name,tId}) => {
         </div>
         <div className="flex w-full flex-col lg:gap-4 gap-1.5 text-white lg:text-base text-sm">
             <motion.button 
-            className='cursor-pointer w-full p-3 bg-green-600 rounded-xl'
+            className='cursor-pointer w-full p-3 bg-stone-green border-2 border-white'
             onClick={handleCompleted}
             whileTap={{
                     scale: 0.8
@@ -92,7 +92,7 @@ const AcceptTask = ({title,description,date,category,name,tId}) => {
               Mark As Completed
             </motion.button>
             <motion.button 
-            className='cursor-pointer w-full p-3 bg-red-600 rounded-xl'
+            className='cursor-pointer w-full p-3 bg-senku-red border-2 border-white'
             onClick={handleFailed}
             whileTap={{
                     scale: 0.8

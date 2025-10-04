@@ -28,7 +28,7 @@ const EmployeeInfo = () => {
 
   return (
     <div className='flex flex-col justify-center items-start gap-8 w-full lg:px-10 px-5 pb-12'>
-        <h1 className='lg:text-4xl text-2xl font-semibold p-4 glass'>Kingdom Of Science Members:</h1>
+        <h1 className='lg:text-4xl text-2xl font-semibold p-4 glass rounded-xl'>Kingdom Of Science Members:</h1>
         <motion.div 
         className="glass p-3 overflow-x-auto w-full relative z-20 flex justify-start items-center lg:gap-6 gap-3 flex-nowrap no-scrollbar"
         variants={containerVariants}

@@ -33,7 +33,7 @@ const AssignedTasks = () => {
 
   return (
     <div className="flex flex-col justify-center items-start gap-8 w-full lg:px-10 px-5">
-      <h1 className="lg:text-4xl text-2xl font-semibold p-4 glass">Assigned Missions:</h1>
+      <h1 className="lg:text-4xl text-2xl font-semibold p-4 glass rounded-xl">Assigned Missions:</h1>
       <motion.div
         className="glass p-3 overflow-auto w-full relative z-20 flex justify-start items-center gap-6 flex-nowrap no-scrollbar"
         variants={containerVariants}

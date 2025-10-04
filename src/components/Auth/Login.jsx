@@ -62,7 +62,7 @@ const Login = ({handleUser}) => {
                 onChange={(e)=>{handlePassword(e)}}
                 />
                 <button 
-                className='w-full bg-green-800 text-white rounded-full sm:p-4 p-3 cursor-pointer'
+                className='w-full bg-stone-green border-2 border-white text-white rounded-full sm:p-4 p-3 cursor-pointer'
                 onClick={handleMessage}>
                     De-Petrify
                 </button>
