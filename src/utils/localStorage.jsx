@@ -309,7 +309,7 @@ export const getLocalStorage = () => {
 };
 
 
-export function useSeededData() {
+export const useSeededData=()=> {
   const [data, setData] = useState({ employees: [], admin: [] });
 
   useEffect(() => {

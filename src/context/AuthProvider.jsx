@@ -9,8 +9,6 @@ const AuthProvider = ({ children }) => {
   useEffect(()=>{
     setUserData(()=>{return getLocalStorage()});
   },[])
-
-  useSeededData();
   
 
   useEffect(() => {

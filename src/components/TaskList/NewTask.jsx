@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/AuthProvider'
-import { getLocalStorage, setLocalStorage } from '../../utils/localStorage';
+import { getLocalStorage, setLocalStorage,useSeededData } from '../../utils/localStorage';
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
@@ -42,6 +42,7 @@ const NewTask = ({title,description,date,category,name,tId}) => {
     });
 
     setUserData(prev => ({ ...prev, employees: updatedEmployees }));
+    useSeededData
     };
 
 
