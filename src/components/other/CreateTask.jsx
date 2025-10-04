@@ -1,6 +1,6 @@
 import { useContext,useState,useEffect } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
-import { setLocalStorage } from '../../utils/localStorage';
+import { setLocalStorage,getLocalStorage } from '../../utils/localStorage';
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -32,6 +32,7 @@ const CreateTask = () => {
 
     useEffect(() => {
       setLocalStorage(userData.employees,userData.admin);
+      setUserData(()=>{return getLocalStorage()});
     }, [userData])
 
 
@@ -68,9 +69,7 @@ const CreateTask = () => {
                 employees: updatedEmployees,
             }));
 
-        setLocalStorage(); // Be sure this updates localStorage based on userData after setUserData
-
-        // Reset form inputs
+        
         setcategory('');
         settaskDate('');
         settaskDescription('');
