@@ -35,7 +35,7 @@ const CreateTask = () => {
     }, [userData])
 
     useEffect(() => {
-      setUserData(()=>{return getLocalStorage()});
+      setUserData(getLocalStorage());
     }, [])
     
 
