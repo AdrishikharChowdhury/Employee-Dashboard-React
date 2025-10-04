@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/AuthProvider'
-import { getLocalStorage, setLocalStorage,useSeededData } from '../../utils/localStorage';
+import { getLocalStorage, setLocalStorage } from '../../utils/localStorage';
 import { motion } from 'framer-motion';
 
 const AcceptTask = ({title,description,date,category,name,tId}) => {
@@ -40,7 +40,6 @@ const AcceptTask = ({title,description,date,category,name,tId}) => {
     });
 
     setUserData(prev => ({ ...prev, employees: updatedEmployees }));
-    useSeededData;
     };
 
     const handleFailed = () => {
@@ -70,7 +69,6 @@ const AcceptTask = ({title,description,date,category,name,tId}) => {
 
     setUserData(prev => ({ ...prev, employees: updatedEmployees }));
     setLocalStorage();
-    useSeededData
     };
 
 
