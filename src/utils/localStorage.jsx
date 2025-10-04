@@ -4,6 +4,7 @@ import yuzu from '../assets/yuzu.jpg'
 import gen from '../assets/gen.jpg'
 import kohaku from '../assets/kohaku.jpg'
 import byaku from '../assets/byakuya.jpg'
+import { useEffect, useState } from 'react'
 
 const initial=()=>{
         const employees = [
@@ -306,3 +307,29 @@ export const getLocalStorage = () => {
   const admin = JSON.parse(localStorage.getItem('admin'));
   return { employees, admin };
 };
+
+
+export function useSeededData() {
+  const [data, setData] = useState({ employees: [], admin: [] });
+
+  useEffect(() => {
+    // Only run on client
+    if (typeof window === "undefined") return;
+
+    // Try to read from localStorage
+    const employees = JSON.parse(localStorage.getItem('employees'));
+    const admin = JSON.parse(localStorage.getItem('admin'));
+
+    if (!employees || !admin) {
+      // If missing, seed with initial() (uses imports, which are URLs after build)
+      const init = initial();
+      localStorage.setItem('employees', JSON.stringify(init.employees));
+      localStorage.setItem('admin', JSON.stringify(init.admin));
+      setData(init);
+    } else {
+      setData({ employees, admin });
+    }
+  }, []);
+
+  return data;
+}
