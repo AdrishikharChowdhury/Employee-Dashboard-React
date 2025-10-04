@@ -2,7 +2,7 @@ import { useContext,useState,useEffect } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 import { setLocalStorage } from '../../utils/localStorage';
 import React from 'react';
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 
 const CreateTask = () => {
 
@@ -31,8 +31,8 @@ const CreateTask = () => {
     }
 
     useEffect(() => {
-    console.log("assignTo changed:", assignTo);
-    }, [assignTo]);
+      setLocalStorage(userData.employees,userData.admin);
+    }, [userData])
 
 
     const submitHandler = (e) => {
